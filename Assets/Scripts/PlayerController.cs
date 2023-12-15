@@ -5,15 +5,13 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 
-
-
-//clase que hereda de MonoBehaviour
 public class PlayerControler : MonoBehaviour
 {
-    private const string V = "Points: ";
+    //private const string V = "Points: ";
     //public TMP_Text countText;
     public float speed;
-    private Rigidbody rb;
+    public float jumpForce;
+    private  Rigidbody rb;
 
 
 
@@ -37,16 +35,32 @@ public class PlayerControler : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < 0.1)
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
-            if (horizontalInput > 0)
-            {
-                Vector3 currentPosition = transform.position;
-                float newXPosition = currentPosition.x - (speed * Mathf.Abs(horizontalInput) * Time.deltaTime);
-                transform.position = new Vector3(newXPosition, currentPosition.y, currentPosition.z);
-            }
+        Vector3 velocity = Vector3.zero;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Saltar");
+            Jump();
+        }
+
+        Vector3 direction = (transform.forward * verticalInput + transform.right * horizontalInput).normalized;
+        velocity = direction * speed;
+
+        velocity.y = rb.velocity.y;
+        rb.velocity = velocity;
+    }
+
+
+    void Jump()
+    {
+     
+        if(transform.position.y< 0)
+        {
+
+        rb.AddForce(Vector3.up * jumpForce);
         }
     }
 
