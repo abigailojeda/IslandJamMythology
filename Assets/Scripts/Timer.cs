@@ -5,7 +5,7 @@ using TMPro; // Add this line to use TextMeshProUGUI
 
 public class Timer : MonoBehaviour
 {
-    public float countdown = 10;
+    public float countdown = 59;
     public GameObject timeTextGameObject;
     private TextMeshProUGUI timeText; // Reference to the TextMeshProUGUI component
     public bool stopped = false;
