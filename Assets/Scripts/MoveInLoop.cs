@@ -11,13 +11,15 @@ public class MoveInLoop : MonoBehaviour
 
     private float t = 0f;
     private bool caminando = true;
-
+    private Quaternion AbsoluteStartRotation;
     void Awake () {
+        AbsoluteStartRotation = transform.rotation;
         StartCoroutine(Patroll());
     }
 
     IEnumerator Patroll () {
         while (true) {
+            transform.rotation = AbsoluteStartRotation;
             //IR al medio
             Vector3 towardsTarget = middlePoint.position - transform.position;
             while (towardsTarget.magnitude > 0.1f) {
