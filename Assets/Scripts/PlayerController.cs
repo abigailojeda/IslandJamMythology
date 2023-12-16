@@ -18,6 +18,8 @@ public class PlayerControler : MonoBehaviour
     public GameObject object2;
     public GameObject object3;
 
+    public GameObject gameOverPanel;
+
 
 
 
@@ -84,7 +86,19 @@ public class PlayerControler : MonoBehaviour
         {
             object3.SetActive(true);
             Destroy(collision.gameObject);
+        }   
+
+        if (collision.gameObject.tag == "Trap")
+        {
+            GameOver();
         }
     }
 
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 }

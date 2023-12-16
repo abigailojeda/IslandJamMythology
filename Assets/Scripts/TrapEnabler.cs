@@ -19,7 +19,7 @@ public class TrapSwitch : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player")) {
             if (isActive == false) {
                 //Audio.instance.PlaySFX("TrapSpikesDelay");
-                transform.position = new Vector2(transform.position.x, transform.position.y - 2.0f);
+                transform.position = new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z);
 
                 Invoke("activate", 1);
             }
@@ -28,14 +28,13 @@ public class TrapSwitch : MonoBehaviour {
 
     public void activate() {
         Debug.Log("activation happened");
-       // transform.position = new Vector2(transform.position.x, transform.position.y - 2.0f);
         trap.SetActive(true);
         Invoke("deactivate", 3);
     }
 
     private void deactivate() {
         Debug.Log("biebie");
-        transform.position = new Vector2(transform.position.x, transform.position.y + 2.0f);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
         trap.SetActive(false);
         isActive = false;
     }

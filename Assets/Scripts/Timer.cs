@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public GameObject timeTextGameObject;
     private TextMeshProUGUI timeText; // Reference to the TextMeshProUGUI component
     public bool stopped = false;
+    public GameObject gameOverPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Timer : MonoBehaviour
                 timeText.text = getTimeString();
             } else {
                 stopped = true;
+                GameOver();
             Debug.Log("Temporizador parado");
             }
         }
@@ -50,4 +52,14 @@ public class Timer : MonoBehaviour
 
         return minutes + ":" + seconds;
     }
+
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
 }
