@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour {
 
-    void Start() {
-        gameObject.SetActive(false);
-    }
+    //void Start() {
+    //    gameObject.SetActive(false);
+    //}
 
     private void Awake() {
         Debug.Log("trap awakened");
