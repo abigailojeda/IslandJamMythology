@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("E");
             Vector3 newPosition = transform.position;
             newPosition.z = player.transform.position.z - 30f;
             transform.position = newPosition;
@@ -18,6 +19,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            Debug.Log("D");
             Vector3 newPosition = transform.position;
             newPosition.z = player.transform.position.z;
             transform.position = newPosition;
