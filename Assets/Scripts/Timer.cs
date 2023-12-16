@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour
                 timeText.text = getTimeString();
             } else {
                 stopped = true;
-            Debug.LogError("Temporizador parado");
+            Debug.Log("Temporizador parado");
             }
         }
     }
